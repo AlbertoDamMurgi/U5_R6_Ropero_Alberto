@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Producto> datos = new ArrayList<>();
+    public static ArrayList<Producto> datos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +45,15 @@ public class MainActivity extends AppCompatActivity {
     private void rellenarDatos() {
 
         datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
-        datos.add(new Producto(R.drawable.calcetin,"Calcetin barato",12.5,""));
+        datos.add(new Producto(R.drawable.camiseta,"Camiseta zebra",18.5,""));
+        datos.add(new Producto(R.drawable.gorra,"Gorra hipster",20,""));
+        datos.add(new Producto(R.drawable.legging,"Legggins feisimos",23.5,""));
+        datos.add(new Producto(R.drawable.sudadera2,"Sudadera guapa",19,""));
+        datos.add(new Producto(R.drawable.vestido,"Vestido bonico",163.23,""));
+        datos.add(new Producto(R.drawable.sudadera1,"Sudadera to guapa",60.39,""));
+        datos.add(new Producto(R.drawable.camiseta3,"Camiseta delmerca",21.25,""));
+        datos.add(new Producto(R.drawable.gorra2,"The thing go SCRAAA",25.98,""));
+        datos.add(new Producto(R.drawable.sudadera3,"Sudadera MAN'S NOT HOT",50,""));
 
 
 
