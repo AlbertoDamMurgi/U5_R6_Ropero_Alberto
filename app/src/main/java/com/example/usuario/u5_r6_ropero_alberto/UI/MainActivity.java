@@ -1,5 +1,6 @@
 package com.example.usuario.u5_r6_ropero_alberto.UI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,11 +10,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.usuario.u5_r6_ropero_alberto.Datos.Producto;
 import com.example.usuario.u5_r6_ropero_alberto.R;
 
 import java.util.ArrayList;
+
+import static com.example.usuario.u5_r6_ropero_alberto.UI.CarritoActivity.posiciones;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(getApplicationContext(),CarritoActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -54,6 +54,7 @@ public class ProductosAdapter extends ArrayAdapter {
         View aux = convertView;
 
         ProductoHolder holder;
+        CarritoHolder holdercarrito;
 
 
 
@@ -75,16 +76,23 @@ public class ProductosAdapter extends ArrayAdapter {
 
             }else{
 
+                aux = LayoutInflater.from(context).inflate(R.layout.esqueleto_carrito,parent,false);
+                holdercarrito = new CarritoHolder();
 
+                holdercarrito.nombre = (TextView) aux.findViewById(R.id.tv_nombre_carrito);
+                holdercarrito.precio = (TextView) aux.findViewById(R.id.tv_precio_carrito);
+                holdercarrito.talla = (TextView) aux.findViewById(R.id.tv_talla_carrito);
+                aux.setTag(holdercarrito);
             }
 
         }
 
 
 
-        holder = (ProductoHolder) aux.getTag();
+
 
        if(tipo==0) {
+           holder = (ProductoHolder) aux.getTag();
            holder.imagen.setImageResource(datos.get(position).getImagen());
            holder.Nombre.setText(datos.get(position).getNombre());
            holder.precio.setText(String.valueOf(datos.get(position).getPrecio()));
@@ -109,6 +117,14 @@ public class ProductosAdapter extends ArrayAdapter {
                    }
                }
            });
+
+       }else{
+           holdercarrito = (CarritoHolder) aux.getTag();
+           holdercarrito.nombre.setText(carrito.get(position).getNombre());
+           holdercarrito.precio.setText(String.valueOf(carrito.get(position).getPrecio()));
+           holdercarrito.talla.setText(carrito.get(position).getTalla());
+
+
 
        }
 
