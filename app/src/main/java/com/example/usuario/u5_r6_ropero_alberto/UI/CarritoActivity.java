@@ -2,7 +2,10 @@ package com.example.usuario.u5_r6_ropero_alberto.UI;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.usuario.u5_r6_ropero_alberto.Datos.Carrito;
 import com.example.usuario.u5_r6_ropero_alberto.R;
@@ -15,6 +18,8 @@ public class CarritoActivity extends AppCompatActivity {
 
 public static ArrayList<Integer> posiciones = new ArrayList<>();
     private ArrayList<Carrito> carrito = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,15 @@ public static ArrayList<Integer> posiciones = new ArrayList<>();
 
         lista.setAdapter(adapter);
 
+        Button boton = (Button) findViewById(R.id.btn_calcular_precio);
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calcularPrecio();
+            }
+        });
+
+
 
     }
 
@@ -42,4 +56,16 @@ public static ArrayList<Integer> posiciones = new ArrayList<>();
         }
 
     }
+
+
+    public void calcularPrecio(){
+
+        TextView preciototal;
+        preciototal = (TextView) findViewById(R.id.tv_preciototal);
+
+        preciototal.setText(String.valueOf(ProductosAdapter.precio_total_adapter));
+
+    }
+
+
 }

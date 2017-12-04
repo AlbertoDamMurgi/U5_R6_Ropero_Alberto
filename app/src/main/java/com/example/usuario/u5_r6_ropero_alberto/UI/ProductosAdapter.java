@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -32,6 +33,8 @@ public class ProductosAdapter extends ArrayAdapter {
     private int tipo;
     private ArrayList<Producto> datos;
     private ArrayList<Carrito> carrito;
+    public static double precio_total_adapter=0;
+    private TextView precio_total;
 
     public ProductosAdapter(@NonNull Context context, ArrayList<Producto> datos, int tipo) {
         super(context, 0,datos);
@@ -47,6 +50,8 @@ public class ProductosAdapter extends ArrayAdapter {
         this.carrito = carrito;
     }
 
+
+
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -55,6 +60,7 @@ public class ProductosAdapter extends ArrayAdapter {
 
         ProductoHolder holder;
         CarritoHolder holdercarrito;
+
 
 
 
@@ -82,6 +88,10 @@ public class ProductosAdapter extends ArrayAdapter {
                 holdercarrito.nombre = (TextView) aux.findViewById(R.id.tv_nombre_carrito);
                 holdercarrito.precio = (TextView) aux.findViewById(R.id.tv_precio_carrito);
                 holdercarrito.talla = (TextView) aux.findViewById(R.id.tv_talla_carrito);
+                holdercarrito.cantidad = (TextView) aux.findViewById(R.id.tv_cantidad_carrito);
+                holdercarrito.cantidad_mas=(Button) aux.findViewById(R.id.btn_mas_cantidad);
+                holdercarrito.cantidad_menos = (Button) aux.findViewById(R.id.btn_menos_carrito);
+
                 aux.setTag(holdercarrito);
             }
 
@@ -123,7 +133,21 @@ public class ProductosAdapter extends ArrayAdapter {
            holdercarrito.nombre.setText(carrito.get(position).getNombre());
            holdercarrito.precio.setText(String.valueOf(carrito.get(position).getPrecio()));
            holdercarrito.talla.setText(carrito.get(position).getTalla());
+           holdercarrito.cantidad.setText(String.valueOf(carrito.get(position).getCantidad()));
 
+           precio_total_adapter=carrito.get(position).getPrecio()*carrito.get(position).getCantidad();
+
+
+           final CarritoHolder finalHoldercarrito = holdercarrito;
+           holdercarrito.cantidad_mas.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   carrito.get(position).setCantidad(carrito.get(position).getCantidad()+1);
+                   precio_total_adapter+=carrito.get(position).getPrecio()*carrito.get(position).getCantidad();
+                   finalHoldercarrito.cantidad.setText(String.valueOf(carrito.get(position).getCantidad()));
+
+               }
+           });
 
 
        }

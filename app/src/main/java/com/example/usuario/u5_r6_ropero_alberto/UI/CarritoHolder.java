@@ -1,5 +1,6 @@
 package com.example.usuario.u5_r6_ropero_alberto.UI;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -7,5 +8,6 @@ import android.widget.TextView;
  */
 
 public class CarritoHolder {
-    public TextView nombre,precio,talla;
+    public TextView nombre,precio,talla,cantidad;
+    public Button cantidad_mas,cantidad_menos;
 }

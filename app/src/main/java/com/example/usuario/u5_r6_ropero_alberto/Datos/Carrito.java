@@ -9,11 +9,21 @@ public class Carrito {
     private String nombre;
     private double precio;
     private String talla;
+    private int cantidad;
 
     public Carrito(String nombre, double precio, String talla) {
         this.nombre = nombre;
         this.precio = precio;
         this.talla = talla;
+        this.cantidad=1;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getNombre() {

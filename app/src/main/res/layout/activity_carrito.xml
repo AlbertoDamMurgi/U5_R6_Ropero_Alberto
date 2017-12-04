@@ -20,6 +20,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Precio Total:"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_preciototal"
         app:layout_constraintEnd_toStartOf="@+id/tv_preciototal"
         app:layout_constraintStart_toStartOf="parent" />
@@ -32,13 +33,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_mas_cantidad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_calcular_precio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
