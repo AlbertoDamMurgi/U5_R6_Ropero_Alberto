@@ -36,6 +36,14 @@ public class ProductosAdapter extends ArrayAdapter {
     public static double precio_total_adapter=0;
     private TextView precio_total;
 
+    public static double getPrecio_total_adapter() {
+        return precio_total_adapter;
+    }
+
+    public static void setPrecio_total_adapter(double precio_total_adapter) {
+        ProductosAdapter.precio_total_adapter = precio_total_adapter;
+    }
+
     public ProductosAdapter(@NonNull Context context, ArrayList<Producto> datos, int tipo) {
         super(context, 0,datos);
         this.context=context;
@@ -135,16 +143,38 @@ public class ProductosAdapter extends ArrayAdapter {
            holdercarrito.talla.setText(carrito.get(position).getTalla());
            holdercarrito.cantidad.setText(String.valueOf(carrito.get(position).getCantidad()));
 
-           precio_total_adapter=carrito.get(position).getPrecio()*carrito.get(position).getCantidad();
+           precio_total_adapter+=(carrito.get(position).getPrecio()*carrito.get(position).getCantidad());
 
 
            final CarritoHolder finalHoldercarrito = holdercarrito;
            holdercarrito.cantidad_mas.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
+
                    carrito.get(position).setCantidad(carrito.get(position).getCantidad()+1);
+
                    precio_total_adapter+=carrito.get(position).getPrecio()*carrito.get(position).getCantidad();
+                   precio_total_adapter-=carrito.get(position).getPrecio()*(carrito.get(position).getCantidad()-1);
                    finalHoldercarrito.cantidad.setText(String.valueOf(carrito.get(position).getCantidad()));
+
+
+               }
+           });
+
+           holdercarrito.cantidad_menos.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+
+                   if(carrito.get(position).getCantidad()>1){
+                       carrito.get(position).setCantidad(carrito.get(position).getCantidad() - 1);
+                       precio_total_adapter -= carrito.get(position).getPrecio() * (carrito.get(position).getCantidad());
+                        finalHoldercarrito.cantidad.setText(String.valueOf(carrito.get(position).getCantidad()));}
+
+                       if(carrito.get(position).getCantidad()==0){
+
+                           carrito.remove(position);
+
+                       }
 
                }
            });

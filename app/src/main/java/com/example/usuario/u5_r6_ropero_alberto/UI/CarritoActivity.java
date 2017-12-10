@@ -1,11 +1,13 @@
 package com.example.usuario.u5_r6_ropero_alberto.UI;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.usuario.u5_r6_ropero_alberto.Datos.Carrito;
 import com.example.usuario.u5_r6_ropero_alberto.R;
@@ -27,9 +29,9 @@ public static ArrayList<Integer> posiciones = new ArrayList<>();
 
         rellenarCarrito();
 
-        ListView lista = (ListView) findViewById(R.id.lista_carrito);
+        final ListView lista = (ListView) findViewById(R.id.lista_carrito);
 
-        ProductosAdapter adapter = new ProductosAdapter(getApplicationContext(),carrito
+        final ProductosAdapter adapter = new ProductosAdapter(getApplicationContext(),carrito
         ,1,"asd");
 
         lista.setAdapter(adapter);
@@ -42,8 +44,24 @@ public static ArrayList<Integer> posiciones = new ArrayList<>();
             }
         });
 
+        FloatingActionButton confirmar = (FloatingActionButton) findViewById(R.id.fab_confirmar);
+
+        confirmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Pedido realizado",Toast.LENGTH_LONG).show();
+
+            }
+        });
 
 
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ProductosAdapter.setPrecio_total_adapter(0);
     }
 
     private void rellenarCarrito() {
@@ -63,7 +81,7 @@ public static ArrayList<Integer> posiciones = new ArrayList<>();
         TextView preciototal;
         preciototal = (TextView) findViewById(R.id.tv_preciototal);
 
-        preciototal.setText(String.valueOf(ProductosAdapter.precio_total_adapter));
+        preciototal.setText(String.valueOf(ProductosAdapter.getPrecio_total_adapter()).trim());
 
     }
 
